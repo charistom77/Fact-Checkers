@@ -1,8 +1,7 @@
 <!-- src/routes/account/+page.svelte -->
 <script>
 	import { enhance } from '$app/forms'
-     // Import the new component
-  import Avatar from './Avatar.svelte'
+	import Avatar from './Avatar.svelte'
 
 	export let data
 	export let form
@@ -10,6 +9,9 @@
 	let { session, supabase, profile } = data
 	$: ({ session, supabase, profile } = data)
 
+	/**
+	 * @type {HTMLFormElement}
+	 */
 	let profileForm;
 	let loading = false
 	let fullName = profile?.full_name ?? ''
@@ -21,15 +23,23 @@
 		loading = true
 		return async () => {
 			loading = false
+			redirectToDashboard(); // Call the redirection function after the update is complete
 		}
 	}
 
 	const handleSignOut = () => {
 		loading = true
+		// @ts-ignore
 		return async ({ update }) => {
 			loading = false
 			update()
 		}
+	}
+
+	// Function to redirect to the dashboard
+	function redirectToDashboard() {
+		// Use window.location.href to redirect to the dashboard page
+		window.location.href = '/dashboard'; // Adjust the URL to match your dashboard route
 	}
 </script>
 
@@ -78,9 +88,7 @@
 				value={loading ? 'Loading...' : 'Update'}
 				disabled={loading}
 			/>
-		</div>
-
-        
+		</div>     
 	</form>
 
 	<form method="post" action="?/signout" use:enhance={handleSignOut}>

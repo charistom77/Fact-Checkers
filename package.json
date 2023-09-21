@@ -16,12 +16,15 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
+		"@rgossiaux/svelte-headlessui": "^2.0.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
 		"autoprefixer": "^10.4.15",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte": "^2.30.0",
+		"flowbite-svelte": "^0.44.15",
+		"flowbite-svelte-icons": "^0.4.4",
 		"postcss": "^8.4.29",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
@@ -38,6 +41,9 @@
 		"@supabase/auth-ui-react": "^0.4.5",
 		"@supabase/auth-ui-shared": "^0.1.7",
 		"@supabase/auth-ui-svelte": "^0.2.5",
-		"@supabase/supabase-js": "^2.33.2"
+		"@supabase/supabase-js": "^2.33.2",
+		"@tailwindcss/forms": "^0.5.6",
+		"flowbite": "^1.8.1",
+		"svelte-routing": "^2.4.0"
 	}
 }
