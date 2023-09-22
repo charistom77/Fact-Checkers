@@ -6,31 +6,27 @@
   import { Textarea, Toolbar, ToolbarButton, Button } from 'flowbite-svelte';
   import { PaperClipOutline, MapPinAltSolid, ImageOutline, CodeOutline, FaceGrinOutline, PapperPlaneOutline } from 'flowbite-svelte-icons';
 
+  let title = '';
+  let description = '';
 
+  function handleSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
+    // Create an object with form data
+    const formData = { title, description };
 
-  let title = "";
-  let description = "";
+    // Emit a custom event to pass the form data to the parent component (main container)
+    dispatch('submit', formData);
 
-  function handleSubmit() {
-    // Create an object to store the form data
-    const formData = {
-      title,
-      description,
-    };
-
-    // You can do something with the formData here, such as sending it to a server
-    // or storing it locally.
-    console.log("Form Data:", formData);
-
-    // Clear the form fields after submission (optional)
-    title = "";
-    description = "";
+    // Reset form fields
+    title = '';
+    description = '';
   }
 </script>
 
 
 
+<div class="mt-20 mb-20">
 <form on:submit={handleSubmit} class="relative">
   <div class="overflow-hidden rounded-lg border border-gray-300 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
     <div>
@@ -58,6 +54,13 @@
         </Toolbar>
       </Textarea>
     </div>
-  <Button type="submit">Submit</Button>
+  <button type="submit" class="bg-blue-500 text-white p-2 rounded-md" on:click={handleSubmit()}>Submit</button>
 </div>
 </form>
+</div>
+
+<main>
+  <!-- Other content or components -->
+  <h1>Create Something</h1>
+  <!-- Include the Form component here -->
+</main>
